@@ -1,0 +1,55 @@
+# EGX33 Shariah universe — point-in-time constituents.
+#
+# One snapshot per semi-annual EGX review. Add a NEW snapshot each review;
+# never edit an old one — point-in-time queries depend on history being
+# exactly what was known at the time.
+#
+# Empty or stale snapshots are fail-closed: every BUY is blocked until
+# the latest review is loaded.
+
+max_age_days: 200
+
+allowed_security_classes:
+  - LocalSecurity_IN
+
+watchlist_no_buy: []
+
+snapshots:
+  - effective_date: 2026-11-03
+    review_effective_date: 2026-08-01
+    source: "https://beta.egx.com.eg/api/bff/egx/index-constituents?indexName=EGX_SHARIAH (observed 2026-11-03; H2-2026 review effective 2026-08-01)"
+    symbols:
+      - ACGC    # Arab Cotton Ginning
+      - ADIB    # Abu Dhabi Islamic Bank - Egypt
+      - AMOC    # Alexandria Mineral Oils Company
+      - ARCC    # Arabian Cement Company
+      - ATQA    # Misr National Steel - Ataqa
+      - CLHO    # Cleopatra Hospital
+      - EFID    # Edita Food Industries
+      - EFIH    # E-finance for Digital and Financial Investments
+      - EGAL    # Egypt Aluminum
+      - EGAS    # Natural Gas & Mining Project (Egypt Gas)
+      - ETEL    # Telecom Egypt
+      - ETRS    # Egyptian Transport & Commercial Services (EGYTRANS NOSCO)
+      - FAIT    # Faisal Islamic Bank of Egypt - EGP line
+      - FAITA   # Faisal Islamic Bank of Egypt - USD line
+      - GOUR    # Gourmet Egypt.Com Foods
+      - ICFC    # International Company for Fertilizers & Chemicals
+      - IFAP    # International Agricultural Products
+      - ISPH    # Ibnsina Pharma
+      - JUFO    # Juhayna Food Industries
+      - LCSW    # Lecico Egypt
+      - MASR    # Madinet Masr for Housing and Development
+      - MCQE    # Misr Cement (Qena)
+      - MPCO    # Mansourah Poultry
+      - MTIE    # MM Group for Industry and International Trade
+      - OCDI    # Six of October Development & Investment (SODIC)
+      - ORAS    # Orascom Construction PLC
+      - ORHD    # Orascom Development Egypt
+      - ORWE    # Oriental Weavers
+      - PHDC    # Palm Hills Development
+      - RACC    # Raya Customer Experience
+      - RMDA    # Rameda - Tenth of Ramadan Pharmaceutical Industries
+      - SAUD    # Al Baraka Bank Egypt
+      - SKPC    # Sidi Kerir Petrochemicals (SIDPEC)
+      - TMGH    # T M G Holding (Talaat Moustafa Group)

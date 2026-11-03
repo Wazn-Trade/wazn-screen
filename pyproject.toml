@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wazn-screen"
+version = "0.1.0"
+description = "Sharia screening for EGX33 and Egypt — library, HTTP API, and MCP server."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Wazn", email = "hello@wazn.trade" }]
+keywords = ["sharia", "screening", "aaoifi", "egx", "mcp", "fintech"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial",
+]
+dependencies = [
+    "PyYAML>=6.0",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.110", "uvicorn[standard]>=0.29"]
+mcp = ["mcp>=1.2"]
+dev = ["pytest>=8.0", "ruff>=0.5", "mypy>=1.10"]
+
+[project.scripts]
+wazn-screen = "wazn_screen.cli:main"
+wazn-screen-api = "wazn_screen.api:main"
+wazn-screen-mcp = "wazn_screen.mcp_server:main"
+
+[project.urls]
+Homepage = "https://wazn.trade"
+Source = "https://github.com/Wazn-Trade/wazn-screen"
+Issues = "https://github.com/Wazn-Trade/wazn-screen/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wazn_screen"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/wazn_screen/data/egx33.yaml" = "wazn_screen/data/egx33.yaml"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+    "network: tests that hit the real internet (opt-in; skipped by default)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
+packages = ["wazn_screen"]
